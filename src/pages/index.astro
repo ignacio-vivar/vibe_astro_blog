@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MateriaCard from "../components/MateriaCard.astro";
+
+const materias = [
+  {
+    title: "Tecnología de la Energía",
+    description:
+      "Fuentes de energía, tecnologías de conversión, energías renovables y sistemas energéticos.",
+    href: "/materia/tecnologia-energia",
+    icon: "⚡",
+    gradient: "from-primary/20 to-secondary/20",
+  },
+  {
+    title: "Control Numérico",
+    description: "Contenido de estudio organizado por unidades.",
+    href: "/materia/control-numerico",
+    icon: "🔧",
+    gradient: "from-secondary/20 to-accent/20",
+  },
+  {
+    title: "Tecnología de Control",
+    description: "Contenido de estudio organizado por unidades.",
+    href: "/materia/tecnologia-control",
+    icon: "🎛️",
+    gradient: "from-accent/20 to-info/20",
+  },
+  {
+    title: "Electrónica de Potencia",
+    description: "Contenido de estudio organizado por unidades.",
+    href: "/materia/electronica-potencia",
+    icon: "🔌",
+    gradient: "from-info/20 to-primary/20",
+  },
+];
+---
+
+<BaseLayout title="Inicio">
+  <!-- Materias grid -->
+  <section class="pb-16">
+    <div class="text-center mb-10">
+      <h2
+        class="font-display text-2xl md:text-3xl font-bold text-base-content mb-3"
+      >
+        Materias
+      </h2>
+      <p class="text-base-content/50">
+        Seleccioná la materia para ver su contenido
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        materias.map((materia, i) => (
+          <MateriaCard
+            title={materia.title}
+            description={materia.description}
+            href={materia.href}
+            icon={materia.icon}
+            gradient={materia.gradient}
+            delay={i * 100}
+          />
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

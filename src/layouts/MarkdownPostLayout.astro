@@ -1,0 +1,65 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { frontmatter } = Astro.props;
+const title = frontmatter.title || 'Sin título';
+const description = frontmatter.description || '';
+const materia = frontmatter.materia || '';
+const materiaSlug = frontmatter.materiaSlug || '';
+const unidad = frontmatter.unidad || '';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Breadcrumb -->
+  <div class="text-sm breadcrumbs mb-8">
+    <ul>
+      <li><a href="/" class="text-primary hover:text-primary/80">Inicio</a></li>
+      {materia && materiaSlug && (
+        <li><a href={`/materia/${materiaSlug}`} class="text-primary hover:text-primary/80">{materia}</a></li>
+      )}
+      {unidad && (
+        <li class="text-base-content/50">{unidad}</li>
+      )}
+    </ul>
+  </div>
+
+  <!-- Unit header -->
+  {frontmatter.unitNumber && (
+    <div class="flex items-center gap-5 mb-10">
+      <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display text-2xl font-bold text-white shadow-lg shadow-primary/20">
+        {frontmatter.unitNumber}
+      </div>
+      <div>
+        <h1 class="font-display text-3xl md:text-4xl font-bold text-base-content">{title}</h1>
+        {description && <p class="text-base-content/50 mt-1">{description}</p>}
+      </div>
+    </div>
+  )}
+
+  <!-- Markdown content with prose styling -->
+  <article class="prose prose-lg max-w-none">
+    <slot />
+  </article>
+
+  <!-- Navigation buttons -->
+  {(frontmatter.prevUrl || frontmatter.nextUrl) && (
+    <div class="flex gap-4 mt-10 not-prose">
+      {frontmatter.prevUrl && (
+        <a href={frontmatter.prevUrl} class="btn btn-outline btn-primary gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          {frontmatter.prevLabel || 'Anterior'}
+        </a>
+      )}
+      {frontmatter.nextUrl && (
+        <a href={frontmatter.nextUrl} class="btn btn-primary gap-2">
+          {frontmatter.nextLabel || 'Siguiente'}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      )}
+    </div>
+  )}
+</BaseLayout>

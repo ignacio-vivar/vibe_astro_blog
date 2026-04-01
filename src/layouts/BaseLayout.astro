@@ -1,0 +1,226 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Plataforma de estudio organizada por unidades y materias",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-theme="studyhub">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title} | Blog de Nacho - CDF</title>
+  </head>
+  <body class="min-h-screen bg-base-100 font-sans">
+    <!-- Animated gradient background -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] animate-slow-spin"
+      >
+        <div
+          class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute top-3/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute bottom-1/4 left-1/2 w-72 h-72 bg-accent/10 rounded-full blur-3xl"
+        >
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar bg-base-200/80 backdrop-blur-xl border-b border-primary/10 sticky top-0 z-50"
+    >
+      <div class="navbar-start">
+        <a
+          href="/"
+          class="btn btn-ghost font-display text-xl gap-2 hover:bg-primary/10 transition-all duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-primary"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            ></path>
+          </svg>
+          <span
+            class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+            >Blog de Nacho CDF</span
+          >
+        </a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+          <li>
+            <a
+              href="/"
+              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="/materia/tecnologia-energia"
+              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
+              >⚡ Tec. Energía</a
+            >
+          </li>
+          <li>
+            <a
+              href="/materia/control-numerico"
+              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
+              >🔧 Control Num.</a
+            >
+          </li>
+          <li>
+            <a
+              href="/materia/tecnologia-control"
+              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
+              >🎛️ Tec. Control</a
+            >
+          </li>
+          <li>
+            <a
+              href="/materia/electronica-potencia"
+              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
+              >🔌 Elec. Potencia</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-end lg:hidden">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16"></path>
+            </svg>
+          </label>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-200 rounded-box w-56 border border-primary/10"
+          >
+            <li><a href="/">Inicio</a></li>
+            <li>
+              <a href="/materia/tecnologia-energia"
+                >⚡ Tecnología de la Energía</a
+              >
+            </li>
+            <li><a href="/materia/control-numerico">🔧 Control Numérico</a></li>
+            <li>
+              <a href="/materia/tecnologia-control">🎛️ Tecnología de Control</a>
+            </li>
+            <li>
+              <a href="/materia/electronica-potencia"
+                >🔌 Electrónica de Potencia</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container mx-auto px-4 py-8 max-w-7xl">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="footer p-8 bg-base-200/50 backdrop-blur-sm text-base-content border-t border-primary/5 mt-16 flex justify-between items-center"
+    >
+      <aside>
+        <p class="text-sm opacity-60">
+          Blog con información de las materias - CDF
+        </p>
+      </aside>
+      <nav>
+        <a href="/docs" class="text-xs opacity-10 hover:opacity-100 transition-opacity cursor-pointer">/docs</a>
+      </nav>
+    </footer>
+
+    <style is:global>
+      @keyframes slow-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .animate-slow-spin {
+        animation: slow-spin 120s linear infinite;
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: oklch(var(--b2));
+      }
+      ::-webkit-scrollbar-thumb {
+        background: oklch(var(--p) / 0.3);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: oklch(var(--p) / 0.5);
+      }
+
+      /* Prose overrides for markdown */
+      .prose {
+        --tw-prose-body: oklch(var(--bc));
+        --tw-prose-headings: oklch(var(--bc));
+        --tw-prose-links: oklch(var(--p));
+        --tw-prose-bold: oklch(var(--bc));
+        --tw-prose-counters: oklch(var(--p));
+        --tw-prose-bullets: oklch(var(--p));
+        --tw-prose-hr: oklch(var(--p) / 0.2);
+        --tw-prose-quotes: oklch(var(--bc));
+        --tw-prose-quote-borders: oklch(var(--p));
+        --tw-prose-code: oklch(var(--s));
+        --tw-prose-th-borders: oklch(var(--p) / 0.2);
+        --tw-prose-td-borders: oklch(var(--p) / 0.1);
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+---
+layout: ../layouts/MarkdownPostLayout.astro
+title: "Documentación del Blog"
+description: "Guía de uso y referencia rápida para agregar contenido"
+unidad: "Docs"
+---
+
+import PdfEmbed from '../components/PdfEmbed.astro';
+import PdfLink from '../components/PdfLink.astro';
+import YoutubeEmbed from '../components/YoutubeEmbed.astro';
+
+## 📖 ¿Cómo funciona este blog?
+
+> **Nota para estudiantes curiosos:** 👋 ¡Hola! Esta página está escondida a propósito. Su único fin es explicarles (a los que tengan curiosidad o les guste la programación) cómo está construido este blog por detrás, la simplicidad de su estructura, y cómo se le agrega contenido fáilmente.
+
+Este blog está hecho con **Astro** + **DaisyUI** + **MDX**. El contenido se organiza por **materias** y cada materia tiene **unidades**.
+
+Cada unidad es un archivo `.mdx` donde escribís en **markdown normal** y podés usar **componentes** para incrustar PDFs y videos.
+
+---
+
+## 📂 Estructura de archivos
+
+```
+src/pages/
+├── index.astro              ← Página de inicio
+├── docs.mdx                 ← Esta documentación
+└── materia/
+    ├── tecnologia-energia/
+    │   ├── index.astro      ← Listado de unidades
+    │   ├── unidad-1.mdx     ← Contenido de la unidad
+    │   ├── unidad-2.mdx
+    │   └── unidad-3.mdx
+    ├── control-numerico/
+    │   ├── index.astro
+    │   ├── unidad-1.mdx
+    │   ├── unidad-2.mdx
+    │   └── unidad-3.mdx
+    ├── tecnologia-control/
+    │   └── ...
+    └── electronica-potencia/
+        └── ...
+```
+
+---
+
+## ✏️ Crear o editar una unidad
+
+Cada archivo `.mdx` tiene dos partes:
+
+### 1. Frontmatter (configuración)
+
+Es el bloque entre `---` al inicio del archivo. Define los metadatos:
+
+```yaml
+---
+layout: ../../../layouts/MarkdownPostLayout.astro
+title: "Nombre de la unidad"
+description: "Descripción corta"
+materia: "Nombre de la Materia"
+materiaSlug: "slug-de-la-materia"
+unidad: "Unidad X"
+unitNumber: 1
+prevUrl: "/materia/slug/unidad-anterior"
+prevLabel: "Unidad Anterior"
+nextUrl: "/materia/slug/unidad-siguiente"
+nextLabel: "Unidad Siguiente"
+---
+```
+
+| Campo | Obligatorio | Descripción |
+|-------|:-----------:|-------------|
+| `layout` | ✅ | Siempre usar `../../../layouts/MarkdownPostLayout.astro` |
+| `title` | ✅ | Título que se muestra en la página y el navegador |
+| `description` | ❌ | Subtítulo debajo del título |
+| `materia` | ✅ | Nombre completo de la materia (para el breadcrumb) |
+| `materiaSlug` | ✅ | Slug de la URL de la materia |
+| `unidad` | ✅ | Texto del breadcrumb (ej: "Unidad 1") |
+| `unitNumber` | ❌ | Número que aparece en el badge |
+| `prevUrl` / `nextUrl` | ❌ | URLs de navegación anterior/siguiente |
+| `prevLabel` / `nextLabel` | ❌ | Textos de los botones de navegación |
+
+### 2. Contenido (markdown)
+
+Después del frontmatter, escribís markdown normal:
+
+```markdown
+## Título de sección
+
+Texto normal con **negritas** y *cursivas*.
+
+- Listas
+- Con viñetas
+
+1. Listas
+2. Numeradas
+
+> Citas o notas
+
+| Columna 1 | Columna 2 |
+|-----------|-----------|
+| dato      | dato      |
+```
+
+---
+
+## 📄 Incrustar un PDF
+
+### Paso 1: Colocar el PDF
+
+Copiá tu archivo PDF en la carpeta `public/pdfs/`. Por ejemplo:
+
+```
+public/pdfs/mi-documento.pdf
+```
+
+### Paso 2: Importar y usar el componente
+
+Al inicio del contenido (después del frontmatter), agregá el import:
+
+```javascript
+import PdfEmbed from '../../../components/PdfEmbed.astro';
+```
+
+Y en el lugar donde quieras el PDF:
+
+```jsx
+<PdfEmbed src="/pdfs/mi-documento.pdf" titulo="Título del documento" />
+```
+
+### Atributos del componente
+
+| Atributo | Obligatorio | Descripción |
+|----------|:-----------:|-------------|
+| `src` | ✅ | Ruta al PDF (siempre empieza con `/pdfs/`) |
+| `titulo` | ❌ | Título que aparece en el encabezado (default: "Documento PDF") |
+
+### Ejemplo en vivo (Incrustado)
+
+<PdfEmbed src="/pdfs/ejemplo-introduccion.pdf" titulo="PDF de ejemplo" />
+
+---
+
+## 🔗 Enlace de Descarga a PDF (Alternativa)
+
+Si no querés incrustar el PDF completo en la página y prefieres un enlace limpio tipo "botón" para abrirlo o descargarlo, usá el componente `PdfLink`.
+
+### Paso 1: Importar y usar el componente
+
+```javascript
+import PdfLink from '../../../components/PdfLink.astro';
+```
+
+Y en lugar de `PdfEmbed`, usás:
+
+```jsx
+<PdfLink src="/pdfs/mi-documento.pdf" titulo="Descargar Guía N°2" description="PDF - 2MB" />
+```
+
+### Atributos del componente
+
+| Atributo | Obligatorio | Descripción |
+|----------|:-----------:|-------------|
+| `src` | ✅ | Ruta al PDF (siempre empieza con `/pdfs/`) |
+| `titulo` | ✅ | Título del enlace o botón |
+| `description` | ❌ | Subtítulo opcional (ideal para el peso o formato) |
+
+### Ejemplo en vivo (Enlace)
+
+<PdfLink src="/pdfs/ejemplo-introduccion.pdf" titulo="Guía Práctica N°2 - Ejercicios" description="Documento PDF de lectura recomendada" />
+
+---
+
+## 🎥 Incrustar un Video de YouTube
+
+### Paso 1: Obtener el ID del video
+
+De la URL de YouTube, copiar solo el ID:
+
+```
+https://www.youtube.com/watch?v=zOjov-2OZ0E
+                                └──────────┘
+                                   Este es el ID
+```
+
+### Paso 2: Importar y usar el componente
+
+```javascript
+import YoutubeEmbed from '../../../components/YoutubeEmbed.astro';
+```
+
+Y donde quieras el video:
+
+```jsx
+<YoutubeEmbed id="zOjov-2OZ0E" titulo="Título del video" />
+```
+
+### Atributos del componente
+
+| Atributo | Obligatorio | Descripción |
+|----------|:-----------:|-------------|
+| `id` | ✅ | ID del video de YouTube |
+| `titulo` | ❌ | Título que aparece en el encabezado (default: "Video de YouTube") |
+
+### Ejemplo en vivo
+
+<YoutubeEmbed id="zOjov-2OZ0E" titulo="Video de ejemplo" />
+
+---
+
+## 🆕 Agregar una nueva materia
+
+Para crear una materia nueva necesitás:
+
+1. **Crear la carpeta** en `src/pages/materia/nombre-materia/`
+2. **Crear el `index.astro`** (copiá uno existente y cambiá los datos)
+3. **Crear los archivos `.mdx`** de cada unidad
+4. **Agregar la card** en `src/pages/index.astro`
+5. **Agregar el link** en el navbar en `src/layouts/BaseLayout.astro`
+
+---
+
+## 🆕 Agregar una nueva unidad
+
+1. Crear un archivo `.mdx` en la carpeta de la materia (ej: `unidad-4.mdx`)
+2. Copiar el frontmatter de otra unidad y ajustar los datos
+3. Actualizar `prevUrl`/`nextUrl` de las unidades adyacentes
+4. Agregar la unidad al array `unidades` en el `index.astro` de la materia
+
+---
+
+## 🚀 Comandos útiles
+
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Iniciar servidor de desarrollo (localhost:4321) |
+| `npm run build` | Compilar para producción |
+| `npm run preview` | Previsualizar el build de producción |
+
+---
+
+## 💡 Tips
+
+- Los cambios en archivos `.mdx` se ven **al instante** en el navegador (hot reload)
+- Los PDFs deben ir siempre en `public/pdfs/` para que se sirvan correctamente
+- Podés usar HTML dentro del markdown si necesitás algo más complejo
+- Los bloques de código soportan syntax highlighting (tema Dracula)
