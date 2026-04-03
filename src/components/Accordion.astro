@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<details
+  class="group bg-base-200/50 border border-primary/20 rounded-2xl my-6 shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+>
+  <summary
+    class="flex justify-between items-center font-semibold cursor-pointer list-none p-4 hover:text-primary transition-colors text-base-content"
+  >
+    <span>{title}</span>
+    <span
+      class="transition duration-300 group-open:rotate-180 text-primary opacity-80 group-hover:opacity-100"
+    >
+      <svg
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </span>
+  </summary>
+  <div class="p-4 pt-0 text-base-content/90">
+    <slot />
+  </div>
+</details>

@@ -22,9 +22,9 @@ const {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>{title} | Blog de Nacho - CDF</title>
+    <title>{title} | I.Vivar - CDF</title>
   </head>
-  <body class="min-h-screen bg-base-100 font-sans">
+  <body class="min-h-screen bg-base-100 font-sans flex flex-col">
     <!-- Animated gradient background -->
     <div class="fixed inset-0 -z-10 overflow-hidden">
       <div
@@ -70,46 +70,48 @@ const {
           </svg>
           <span
             class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-            >Blog de Nacho CDF</span
+            >I.Vivar CDF</span
           >
         </a>
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1 gap-1">
-          <li>
+      <div class="navbar-end hidden lg:flex">
+        <ul
+          class="menu menu-horizontal px-1 gap-1 rounded-lg border border-red-900"
+        >
+          <li class="flex">
             <a
               href="/"
-              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
-              >Inicio</a
+              class="rounded-lg hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 hover:-translate-y-0.5 flex items-center justify-center min-h-[48px]"
             >
+              Inicio
+            </a>
           </li>
           <li>
             <a
               href="/materia/tecnologia-energia"
-              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
-              >⚡ Tec. Energía</a
+              class="rounded-lg hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 hover:-translate-y-0.5"
             >
-          </li>
-          <li>
-            <a
-              href="/materia/control-numerico"
-              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
-              >🔧 Control Num.</a
-            >
+              <img src="/icons/te_icon.svg" class="w-8 h-8 object-contain bg-gray-600 rounded-md p-1.5" alt="" />
+              Tec. Energía
+            </a>
           </li>
           <li>
             <a
               href="/materia/tecnologia-control"
-              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
-              >🎛️ Tec. Control</a
+              class="rounded-lg hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 hover:-translate-y-0.5"
             >
+              <img src="/icons/tc_icon.svg" class="w-8 h-8 object-contain brightness-0 invert opacity-80" alt="" />
+              Tec. Control
+            </a>
           </li>
           <li>
             <a
               href="/materia/electronica-potencia"
-              class="rounded-lg hover:bg-primary/10 transition-all duration-300"
-              >🔌 Elec. Potencia</a
+              class="rounded-lg hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 hover:-translate-y-0.5"
             >
+              <img src="/icons/ep_icon.svg" class="w-8 h-8 object-contain brightness-0 invert opacity-80" alt="" />
+              Elec. Potencia
+            </a>
           </li>
         </ul>
       </div>
@@ -136,18 +138,22 @@ const {
           >
             <li><a href="/">Inicio</a></li>
             <li>
-              <a href="/materia/tecnologia-energia"
-                >⚡ Tecnología de la Energía</a
-              >
-            </li>
-            <li><a href="/materia/control-numerico">🔧 Control Numérico</a></li>
-            <li>
-              <a href="/materia/tecnologia-control">🎛️ Tecnología de Control</a>
+              <a href="/materia/tecnologia-energia">
+                <img src="/icons/te_icon.svg" class="w-8 h-8 object-contain bg-gray-600 rounded-md p-1.5" alt="" />
+                Tecnología de la Energía
+              </a>
             </li>
             <li>
-              <a href="/materia/electronica-potencia"
-                >🔌 Electrónica de Potencia</a
-              >
+              <a href="/materia/tecnologia-control">
+                <img src="/icons/tc_icon.svg" class="w-8 h-8 object-contain brightness-0 invert opacity-80" alt="" />
+                Tecnología de Control
+              </a>
+            </li>
+            <li>
+              <a href="/materia/electronica-potencia">
+                <img src="/icons/ep_icon.svg" class="w-8 h-8 object-contain brightness-0 invert opacity-80" alt="" />
+                Electrónica de Potencia
+              </a>
             </li>
           </ul>
         </div>
@@ -155,21 +161,27 @@ const {
     </nav>
 
     <!-- Main content -->
-    <main class="container mx-auto px-4 py-8 max-w-7xl">
+    <main
+      class="container mx-auto px-4 py-8 max-w-7xl flex-grow w-full flex flex-col"
+    >
       <slot />
     </main>
 
     <!-- Footer -->
     <footer
-      class="footer p-8 bg-base-200/50 backdrop-blur-sm text-base-content border-t border-primary/5 mt-16 flex justify-between items-center"
+      class="p-8 bg-base-200/50 backdrop-blur-sm text-base-content border-t border-primary/5 mt-auto flex justify-between items-center"
     >
       <aside>
-        <p class="text-sm opacity-60">
-          Blog con información de las materias - CDF
+        <p class="text-sm opacity-60 italic">
+          Contacto : ignacio.vivar.cruz@gmail.com
         </p>
       </aside>
       <nav>
-        <a href="/docs" class="text-xs opacity-10 hover:opacity-100 transition-opacity cursor-pointer">/docs</a>
+        <a
+          href="/docs"
+          class="text-xs opacity-10 hover:opacity-100 transition-opacity cursor-pointer"
+          >/docs</a
+        >
       </nav>
     </footer>
 

@@ -1,83 +1,98 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
-title: "Introducción a la Energía"
-description: "Conceptos fundamentales de energía, formas de energía y principios de conservación"
+title: "Criterios de evaluación y pautas"
+description: "Criterios de evaluación y pautas"
 materia: "Tecnología de la Energía"
 materiaSlug: "tecnologia-energia"
 unidad: "Unidad 1"
 unitNumber: 1
 prevUrl: "/materia/tecnologia-energia"
 prevLabel: "Volver a la materia"
-# nextUrl: "/materia/tecnologia-energia/unidad-2"
+nextUrl: "/materia/tecnologia-energia/unidad-2"
 nextLabel: "Unidad 2"
 ---
 
 import PdfEmbed from '../../../components/PdfEmbed.astro';
 import PdfLink from '../../../components/PdfLink.astro';
 import YoutubeEmbed from '../../../components/YoutubeEmbed.astro';
+import Accordion from '../../../components/Accordion.astro';
 
-## ¿Qué es la Energía?
 
-La **energía** es la capacidad que tiene un cuerpo o sistema para realizar un trabajo o producir un cambio. Es una magnitud fundamental en la física y la ingeniería, medida en **Joules (J)** en el Sistema Internacional.
+<Accordion title="Normas dispositivos electrónicos">
++ En caso de disponer notebook o tablet:
+	+ Su uso será unicamente con fines de trabajo.
+		+ No se pueden usar redes sociales.
+		+ No se puede jugar.
+		+ No se pueden hacer bromas con word, paint.
+		+ No debe leerse material ajeno al contenido de estudio.
+	+ El uso indebido automáticamente será agregado al registro de planilla.
+	+ Considerar que la persona responsable directa firmará el registro por planilla, pero la nota del grupo sobre la presentación será afectada. Se recomienda en este sentido un autocontrol del propio grupo.
+</Accordion>
 
-> "La energía no se crea ni se destruye, solo se transforma" — Primer principio de la termodinámica.
+<Accordion title="Formas de Evaluación">
+
+
++ Presentaciones Grupales.
+	+ También se realizan algunas presentaciones a partir únicamente de imágenes.
++ Pruebas escritas.
++ Debates y defensas de temas.
++ Proyectos, maquetas, diseños 3D.
++ Análisis e interpretación de ecuaciones.
+
+</Accordion>
+
+<Accordion title="Criterios de Evaluación">
+
++ Hay un recuperatorio por cuatrimestre.
++ No hay recuperatorios finales.
++ Los recuperatorios serán antes de finalizar el cuatrimestre correspondiente.
++ En caso de faltar un día de evaluación se deberá presentar certificado médico, en el mismo día a preceptoría por medio de correo electrónico adjuntando una fotografía del certificado.
+	+ Si corresponde otro caso de fuerza mayor se deberá justificar mediante cuaderno de comunicado para la próxima clase sin excepción, caso contrario el tema pasará directamente para recuperatorio.
++ Se pueden adeudar hasta 2 temas por cuatrimestre, que serán evaluados en único recuperatorio.
+---
++ En caso de que un grupo no tenga todos los integrantes del grupo para el día de la presentación deberán presentar de todas formas, explicando en detalle lo que han estudiado y sinteticamente lo de los compañeros, un resumen de lo que les correspondía. Dado que el grupo debe comprender todo el trabajo.
++ Todos los grupos deberán estar preparados para el día de la exposición no deben suponer que necesariamente los compañeros van a ocupar el tiempo de la clase para que no les toque exponer. En caso de no estar preparados pasarán a recuperatorio directamente.
++ Deberán agregar un documento o aportado con todas las fuentes incluidos los prompt's o chat's con IA.
+---
+
++ En el caso de las evaluaciones escritas, las respuestas deben basarse en la explicación del alumno y lo que comprende respecto al tema, sin perder el vocabulario apropiado. No se aceptan definiciones copiadas de memoria.
 
 ---
 
-## Formas de Energía
++ Para los debates en su momento se explicará la estructura, las reglas y la forma de evaluación. Para esta etapa será necesario una investigación profunda y compromiso con el tema asignado.
+</Accordion>
 
-| Forma | Descripción | Ejemplo |
-|-------|-------------|---------|
-| **Cinética** | Energía del movimiento | Un auto en marcha |
-| **Potencial** | Energía almacenada por posición | Agua en una represa |
-| **Térmica** | Energía por temperatura | Calor de una caldera |
-| **Eléctrica** | Flujo de cargas eléctricas | Corriente en un cable |
-| **Química** | Almacenada en enlaces moleculares | Combustibles fósiles |
-| **Nuclear** | En el núcleo de los átomos | Fisión del uranio |
+<Accordion title="Criterios para las presentaciones">
 
----
+***A continuación se dará una lista de items a cumplir sin excepciones, para mantener un nivel de presentación apropiado***
 
-## Unidades de Medida
+- Fondo blanco, letras negras.
+- Fuente legible y tamaño mínimo 22.
+- Presentar la información en oraciones concretas y no párrafos.
+- Destacar los conceptos claves o palabras importantes en negrita.
+- Si utilizan una aplicación en modo noche u obscuro, no olvidar pasarlo a modo claro para las capturas.
+- No hay un límite de diapositivas.
+- Respetar el tiempo máximo y tiempo mínimo, acordado.
++ Las explicaciones de cada integrante del grupo deberán ser apropiadas.
+	+ No se aceptará que un alumno explique un contenido excaso.
+	+ No se aceptará la lectura persistente del contenido, por ningún tipo de medio.
+	+ La explicación del tema deberá sostener un nivel de fluidez, los silencios prolongados no están permitidos.
 
-- **Joule (J)**: unidad del SI
-- **Kilovatio-hora (kWh)**: 1 kWh = 3.6 × 10⁶ J
-- **Caloría (cal)**: 1 cal = 4.186 J
-- **BTU** (British Thermal Unit): 1 BTU = 1055 J
+</Accordion>
 
----
 
-## Principio de Conservación de la Energía
-
-La energía total de un sistema aislado permanece constante. Puede transformarse de una forma a otra, pero la cantidad total no varía.
-
-**Ejemplo práctico — Central hidroeléctrica:**
-
-1. El agua almacenada tiene **energía potencial gravitatoria**
-2. Al caer, se convierte en **energía cinética**
-3. La turbina transforma esa energía en **energía mecánica**
-4. El generador la convierte en **energía eléctrica**
-
----
-
+{/* 
 ## 📄 Material de Apoyo (PDF)
 
 Acá podés descargar o abrir los documentos relacionados con la unidad de introducción:
 
 <PdfLink src="/pdfs/ejemplo-introduccion.pdf" titulo="Guía de Introducción a la Energía" description="Unidad 1 - Conceptos Base" />
-<PdfLink src="/pdfs/ejemplo-introduccion.pdf" titulo="Apunte Práctico y Ejercicios" description="Ejercicios resueltos (PDF)" />
+<PdfLink src="/pdfs/ejemplo-introduccion.pdf" titulo="Apunte Práctico y Ejercicios" description="Ejercicios resueltos (PDF)" /> */}
 
----
 
-## 🎥 Video de Apoyo
 
-<YoutubeEmbed id="zOjov-2OZ0E" titulo="¿Qué es la Energía? - Video introductorio" />
+{/* ## 🎥 Video de Apoyo
 
----
+<YoutubeEmbed id="zOjov-2OZ0E" titulo="¿Qué es la Energía? - Video introductorio" /> */}
 
-## Resumen
 
-En esta unidad vimos:
-
-1. Qué es la energía y cómo se mide
-2. Las distintas formas de energía
-3. El principio de conservación
